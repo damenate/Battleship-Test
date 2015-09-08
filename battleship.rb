@@ -1,109 +1,95 @@
 class Player
-  #attr_accessor :name :length
-
- def initialize(name, length)
-   @name = name
-   @length = length
- end
+  # def initialize()
+  #
+  # end
 end
 
 class ComputerPlayer < Player
- def initialize(name: "HAL 9000")
-   @name = name
- end
- def name()
-   @name
- end
+
+  attr_reader :name, :length
+
+  def initialize(name: "HAL 9000")
+    @name = name
+  end
+
+  def name()
+    @name
+  end
 end
 
 class HumanPlayer < Player
- def initialize(name = "Dave")
-   @name = name
- end
+  def initialize(name = "Dave")
+    @name = name
+  end
 
- def name()
-   @name
- end
+  def name()
+    @name
+  end
 end
 
 class Position
-  def initialize(down, across)
-    @down = down
-    @across = across
+  def initialize(x, y)
+    @position = [x, y]
+    @hit = 0
   end
-  def down()
-    @down
+
+  def position
+    @position
   end
-  def across ()
-    @across
+
+  def is_hit
+    @hit
   end
 end
 
 class Ship
   def initialize(length)
-  @length = length
+    @length = length
   end
+
   def length()
     @length
   end
 
   def place(x, y, is_across)
-    i = 1
+    i = 0
     @positions = []
-
     if is_across
       until self.length == i do
-        @positions[i] = Position.new(x,y)
+        @positions[i] = Position.new(x, y)
         i += 1
         x += 1
       end
     else
       until self.length == i do
-        @positions[i] = Position.new(x,y)
+        @positions[i] = Position.new(x, y)
         i += 1
         y += 1
+      end
     end
     if @positions.length == self.length
       return true
     end
   end
+
   def positions
     @positions
   end
-end
 
-  def covers?(x,y)
-    check = [x,y].to_s
+  def covers?(x, y)
+    check = [x, y].to_s
     position_guts = self.positions
     position_guts.to_s.include?(check)
-    # @posx = posx
-    # @posy = posy
-    # @hit = hit
+    # @positions.include?(check)
   end
+
 end
 
-class Position
-  def initialize(x,y)
-    # @posx = posx
-    # @posy = posy
-    # @hit = hit
+class Grid
+  def initialize()
+
   end
 end
-
-
-
-
-#
-#
-# (x...x+@length).each do |i|
-# @pos << Position.new(i, y)
-#
-# (y...y+@length).each do |i|
-# @pos << Position.new(i, y)
-
-
-
-
 
 
 
