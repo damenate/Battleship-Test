@@ -15,7 +15,6 @@ class Grid
 
   def place_ship(ship, x ,y, across)
     ship.place(x, y, across)
-
     unless @ships.any?{|s| s.overlaps_with?(ship)}
       @ships << ship
     else
@@ -24,34 +23,27 @@ class Grid
   end
 
   def display
+    e_coord = "   |"
+    o_coord = " O |"
+
     left_col = ["A |", "B |", "C |", "D |", "E |", "F |", "G |", "H |", "I |", "J |"]
     puts"    1   2   3   4   5   6   7   8   9   10"
     print"  -----------------------------------------"
     10.times do |a|
-      print "\n"
-      print left_col[a]
-      10.times do |b|
-      print "   |"
+    print "\n"
+    print left_col[a]
+    10.times do |b|
+      if has_ship_on?(b+1, a+1)
+        print o_coord
+      else
+        print e_coord
+      end
     end
   end
   puts"\n  -----------------------------------------"
   end
 
-  def empty_grid
-    %Q{    1   2   3   4   5   6   7   8   9   10
-  -----------------------------------------
-A |   |   |   |   |   |   |   |   |   |   |
-B |   |   |   |   |   |   |   |   |   |   |
-C |   |   |   |   |   |   |   |   |   |   |
-D |   |   |   |   |   |   |   |   |   |   |
-E |   |   |   |   |   |   |   |   |   |   |
-F |   |   |   |   |   |   |   |   |   |   |
-G |   |   |   |   |   |   |   |   |   |   |
-H |   |   |   |   |   |   |   |   |   |   |
-I |   |   |   |   |   |   |   |   |   |   |
-J |   |   |   |   |   |   |   |   |   |   |
-  -----------------------------------------
-}
-  end
+
+
 
 end
