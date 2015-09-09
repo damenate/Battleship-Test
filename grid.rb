@@ -3,7 +3,6 @@ require './ship'
 class Grid
   def initialize
     @ships = []
-    @board = []
   end
 
   def has_ship_on?(x, y)
@@ -15,18 +14,19 @@ class Grid
 
   def place_ship(ship, x ,y, across)
     ship.place(x, y, across)
-    @ships << ship
 
-    ship.place(x, y, across)
     unless @ships.any?{|s| s.overlaps_with?(ship)}
-      @board << ship.positions
-      @ships << ships
+      @ships << ship
+    else
+      false
     end
-    true
   end
 
   def display
     puts empty_grid
+    # puts"1   2   3   4   5   6   7   8   9   10"
+    # puts"-----------------------------------------"
+    # 10.times do |i|
   end
 
   def empty_grid
