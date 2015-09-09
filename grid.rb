@@ -3,6 +3,7 @@ require './ship'
 class Grid
   def initialize
     @ships = []
+    @grid
   end
 
   def has_ship_on?(x, y)
@@ -23,10 +24,17 @@ class Grid
   end
 
   def display
-    puts empty_grid
-    # puts"1   2   3   4   5   6   7   8   9   10"
-    # puts"-----------------------------------------"
-    # 10.times do |i|
+    left_col = ["A |", "B |", "C |", "D |", "E |", "F |", "G |", "H |", "I |", "J |"]
+    puts"    1   2   3   4   5   6   7   8   9   10"
+    print"  -----------------------------------------"
+    10.times do |a|
+      print "\n"
+      print left_col[a]
+      10.times do |b|
+      print "   |"
+    end
+  end
+  puts"\n  -----------------------------------------"
   end
 
   def empty_grid
