@@ -107,81 +107,81 @@ class BattleshipTest < Minitest::Test
     refute ship.fire_at(1, 1)
   end
 
-  def test_13_ships_can_be_sunk
-    ship = Ship.new(2)
-    ship.place(2, 1, true)
-
-    refute ship.sunk?
-    ship.fire_at(2, 1)
-    refute ship.sunk?
-    ship.fire_at(3, 1)
-    assert ship.sunk?
-  end
-
-  # Around here, you're going to get frustrated if you have been keeping an
-  # array of positions like [[1, 1], [2, 1], [3,1]].  Consider making this an
-  # array of Position objects instead.  Then you can add other fields besides x
-  # and y.  For instance, you can write a method `hit?` on Position.
-
-  def test_14_unplaced_ship_is_not_sunk
-    ship = Ship.new(2)
-    refute ship.sunk?
-  end
-
-  # One last note before we move onto the grid.  The best solution to the above
-  # tests would be to use `covers?` inside `fire_at`.  For this to be really
-  # slick, though, you'll want `covers?` to not just return a true or a false.
-  # Make it wicked cool by having it return the specific position object
-  # that was being fired on.  Then you can immediately mark it as hit without
-  # searching for it again.
-
-  def test_15_grid_class_exists
-    assert Grid
-  end
-
-  # Remember, for a moment, just solve this one in the simplest way possible. As
-  # far as this test is concerned, what does `has_ship_on?` always return?
-  def test_16_empty_grid
-    grid = Grid.new
-    refute grid.has_ship_on?(1, 1)
-    refute grid.has_ship_on?(10, 7)
-  end
-
-  def test_17_empty_grid_can_display_itself
-    grid = Grid.new
-    assert_output(empty_grid) do
-      grid.display
-    end
-  end
-
-  def empty_grid
-    %Q{    1   2   3   4   5   6   7   8   9   10
-  -----------------------------------------
-A |   |   |   |   |   |   |   |   |   |   |
-B |   |   |   |   |   |   |   |   |   |   |
-C |   |   |   |   |   |   |   |   |   |   |
-D |   |   |   |   |   |   |   |   |   |   |
-E |   |   |   |   |   |   |   |   |   |   |
-F |   |   |   |   |   |   |   |   |   |   |
-G |   |   |   |   |   |   |   |   |   |   |
-H |   |   |   |   |   |   |   |   |   |   |
-I |   |   |   |   |   |   |   |   |   |   |
-J |   |   |   |   |   |   |   |   |   |   |
-  -----------------------------------------
-}
-  end
-
-  def test_18_place_ship
-    grid = Grid.new
-    assert grid.place_ship(Ship.new(4), 3, 3, true)
-    refute grid.has_ship_on?(2, 3)
-    assert grid.has_ship_on?(3, 3)
-    assert grid.has_ship_on?(4, 3)
-    assert grid.has_ship_on?(6, 3)
-    refute grid.has_ship_on?(7, 3)
-    refute grid.has_ship_on?(5, 4)
-  end
-
+#   def test_13_ships_can_be_sunk
+#     ship = Ship.new(2)
+#     ship.place(2, 1, true)
+#
+#     refute ship.sunk?
+#     ship.fire_at(2, 1)
+#     refute ship.sunk?
+#     ship.fire_at(3, 1)
+#     assert ship.sunk?
+#   end
+#
+#   # Around here, you're going to get frustrated if you have been keeping an
+#   # array of positions like [[1, 1], [2, 1], [3,1]].  Consider making this an
+#   # array of Position objects instead.  Then you can add other fields besides x
+#   # and y.  For instance, you can write a method `hit?` on Position.
+#
+#   def test_14_unplaced_ship_is_not_sunk
+#     ship = Ship.new(2)
+#     refute ship.sunk?
+#   end
+#
+#   # One last note before we move onto the grid.  The best solution to the above
+#   # tests would be to use `covers?` inside `fire_at`.  For this to be really
+#   # slick, though, you'll want `covers?` to not just return a true or a false.
+#   # Make it wicked cool by having it return the specific position object
+#   # that was being fired on.  Then you can immediately mark it as hit without
+#   # searching for it again.
+#
+#   def test_15_grid_class_exists
+#     assert Grid
+#   end
+#
+#   # Remember, for a moment, just solve this one in the simplest way possible. As
+#   # far as this test is concerned, what does `has_ship_on?` always return?
+#   def test_16_empty_grid
+#     grid = Grid.new
+#     refute grid.has_ship_on?(1, 1)
+#     refute grid.has_ship_on?(10, 7)
+#   end
+#
+#   def test_17_empty_grid_can_display_itself
+#     grid = Grid.new
+#     assert_output(empty_grid) do
+#       grid.display
+#     end
+#   end
+#
+#   def empty_grid
+#     %Q{    1   2   3   4   5   6   7   8   9   10
+#   -----------------------------------------
+# A |   |   |   |   |   |   |   |   |   |   |
+# B |   |   |   |   |   |   |   |   |   |   |
+# C |   |   |   |   |   |   |   |   |   |   |
+# D |   |   |   |   |   |   |   |   |   |   |
+# E |   |   |   |   |   |   |   |   |   |   |
+# F |   |   |   |   |   |   |   |   |   |   |
+# G |   |   |   |   |   |   |   |   |   |   |
+# H |   |   |   |   |   |   |   |   |   |   |
+# I |   |   |   |   |   |   |   |   |   |   |
+# J |   |   |   |   |   |   |   |   |   |   |
+#   -----------------------------------------
+# }
+#   end
+#
+#   def test_18_place_ship
+#     grid = Grid.new
+#     assert grid.place_ship(Ship.new(4), 3, 3, true)
+#     refute grid.has_ship_on?(2, 3)
+#     assert grid.has_ship_on?(3, 3)
+#     assert grid.has_ship_on?(4, 3)
+#     assert grid.has_ship_on?(6, 3)
+#     refute grid.has_ship_on?(7, 3)
+#     refute grid.has_ship_on?(5, 4)
+#   end
+###########################-DAY ONE-###################################
   # Don't forget on this next one that giving the ship coordinates and placing
   # it on the grid are two separate steps.  You can do the first before knowing
   # whether it's possible to do the second.

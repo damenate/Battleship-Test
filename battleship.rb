@@ -52,6 +52,9 @@ class Ship
   end
 
   def place(x, y, is_across)
+    if @positions
+      return false
+    end
     i = 0
     @positions = []
     if is_across
@@ -83,6 +86,13 @@ class Ship
     # @positions.include?(check)
   end
 
+  def overlaps_with?()
+    if covers? == position_guts
+      return false
+      return true
+    end
+  end
+
 end
 
 class Grid
@@ -96,9 +106,18 @@ end
 
 
 
+ship = Ship.new(4)
+puts ship.place(1,9,true).to_s
 
-
-
+# ship.place(2, 1, true)
+# puts ship.length
+# # puts ship.positions
+# position_guts = ship.positions
+# puts position_guts[0].position.to_s
+# puts position_guts[0].is_hit
+# puts position_guts[1].position.to_s
+# puts position_guts[2].position.to_s
+# puts position_guts[3].position.to_s
 
 
 
