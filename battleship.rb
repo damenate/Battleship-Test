@@ -1,113 +1,34 @@
-class Player
-  # def initialize()
-  #
-  # end
-end
 
-class ComputerPlayer < Player
-
-  attr_reader :name, :length
-
-  def initialize(name: "HAL 9000")
-    @name = name
-  end
-
-  def name()
-    @name
-  end
-end
-
-class HumanPlayer < Player
-  def initialize(name = "Dave")
-    @name = name
-  end
-
-  def name()
-    @name
-  end
-end
-
-class Position
-  def initialize(x, y)
-    @position = [x, y]
-    @hit = 0
-  end
-
-  def position
-    @position
-  end
-
-  def is_hit
-    @hit
-  end
-end
-
-class Ship
-  def initialize(length)
-    @length = length
-  end
-
-  def length()
-    @length
-  end
-
-  def place(x, y, is_across)
-    if @positions
-      return false
-    end
-    i = 0
-    @positions = []
-    if is_across
-      until self.length == i do
-        @positions[i] = Position.new(x, y)
-        i += 1
-        x += 1
-      end
-    else
-      until self.length == i do
-        @positions[i] = Position.new(x, y)
-        i += 1
-        y += 1
-      end
-    end
-    if @positions.length == self.length
-      return true
-    end
-  end
-
-  def positions
-    @positions
-  end
-
-  def covers?(x, y)
-    check = [x, y].to_s
-    position_guts = self.positions
-    position_guts.to_s.include?(check)
-    # @positions.include?(check)
-  end
-
-  def overlaps_with?()
-    if covers? == position_guts
-      return false
-      return true
-    end
-  end
-
-end
-
-class Grid
-  def initialize()
-
-  end
-end
+require './player'
+require './ship'
+require './grid'
 
 
-
-
-
-
-ship = Ship.new(4)
-puts ship.place(1,9,true).to_s
+# class Position
+#attr_reader :position
+#   def initialize(x, y)
+#     @position = [x, y]
+#     @hit = false
+#   end
+#
+#   def is_hit
+#     @hit
+#   end
+# end
+#
+# class Grid
+#   def initialize()
+#
+#   end
+# end
+#
+#
+#
+#
+#
+#
+# ship = Ship.new(4)
+# puts ship.place(1,9,true).to_s
 
 # ship.place(2, 1, true)
 # puts ship.length
