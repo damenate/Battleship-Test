@@ -1,4 +1,5 @@
-require './ship'
+# require './ship'
+# require './position'
 
 class Grid
   def initialize
@@ -53,4 +54,27 @@ class Grid
   end
   puts"\n  -----------------------------------------"
   end
+
+  def sunk?
+    return false if @ships.empty?
+    all_sunk = true
+    @ships.each do |ship|
+    all_sunk = false if !ship.sunk?
+    end
+    all_sunk
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
