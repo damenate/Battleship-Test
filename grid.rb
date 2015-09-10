@@ -86,23 +86,25 @@ class Grid
   # end
   # puts"\n  -----------------------------------------"
   # end
-
   def sunk?
     return false if @ships == []
     @ships.all?{|ship| ship.sunk?}
   end
 
   def x_of(input)
-  input.slice(1..input.length).to_i
+    input.slice(1..input.length).to_i
   end
 
   def y_of(input)
-    convert = { "A" => 1, "B" => 2, "C" => 3,
-                "D" => 4,"E" => 5, "F" => 6,
-                "G" => 7,"H" => 8,"I" => 9,"J" => 10,}
-    grab = input.slice(0)
-
+    letter = input.slice(0)
+    letter.ord-"A".ord+1
   end
+    # convert = { "A" => 1, "B" => 2, "C" => 3,
+    #             "D" => 4,"E" => 5, "F" => 6,
+    #             "G" => 7,"H" => 8,"I" => 9,"J" => 10,}
+    # grab = input.slice(0)
+    # answer = grab(convert)
+    #end
 
 
 
