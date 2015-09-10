@@ -90,33 +90,19 @@ class Grid
   def sunk?
     return false if @ships == []
     @ships.all?{|ship| ship.sunk?}
-    # return false if @ships.empty?
-    # all_sunk = true
-    # @ships.each do |ship|
-    # all_sunk = false if !ship.sunk?
-    # break if all_sunk == false
-    # end
-    # all_sunk
   end
-  #
-  #   return false if @ships == []
-  #   @ships.each do |s|
-  #     return false unless s.sunk
-  #   end
-  #   true
-  # end
 
-  # def sunk?
-  #     return false if @ships.length < 1
-  #     @ships.all? { |ship| ship.sunk? }
-  #   end
+  def x_of(input)
+  input.slice(1..input.length).to_i
+  end
 
+  def y_of(input)
+    convert = { "A" => 1, "B" => 2, "C" => 3,
+                "D" => 4,"E" => 5, "F" => 6,
+                "G" => 7,"H" => 8,"I" => 9,"J" => 10,}
+    grab = input.slice(0)
 
-
-
-
-
-
+  end
 
 
 
